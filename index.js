@@ -1,50 +1,3 @@
-// var express = require('express');
-// var http = require('http');
-
-// var app = express();
-// var server = http.createServer(app);
-
-// var io = require('socket.io')(server);
-// var path = require('path');
-
-
-// app.use(express.static(path.join(__dirname,'./public')));
-
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/public/index.html');
-// });
-
-
-// var name;
-
-// io.on('connection', (socket) => {
-//   console.log('new user connected');
-  
-//   socket.on('joining msg', (username) => {
-//   	name = username;
-//   	io.emit('chat message', `---${name} joined the chat---`);
-//   });
-  
-//   socket.on('disconnect', () => {
-//     console.log('user disconnected');
-//     io.emit('chat message', `---${name} left the chat---`);
-    
-//   });
-//   socket.on('chat message', (msg) => {
-//     socket.broadcast.emit('chat message', msg);        
-//   });
-// });
-
-// // server.listen(3000, () => {
-// //   console.log('Server listening on :3000');
-// // });
-
-
-// const port = process.env.PORT || 3000;
-// server.listen(port, () => {
-//     console.log(`Server started on port ${port}`);
-// });
-
 
 const path = require('path');
 const http = require('http');
@@ -65,7 +18,7 @@ const io = socketio(server);
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-const botName = 'ChatCord Bot';
+const botName = 'Chat System Bot';
 
 // Run when client connects
 io.on('connection', socket => {
@@ -75,7 +28,7 @@ io.on('connection', socket => {
     socket.join(user.room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+    socket.emit('message', formatMessage(botName, 'Welcome to Chat System!'));
 
     // Broadcast when a user connects
     socket.broadcast
