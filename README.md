@@ -1,2 +1,2 @@
 # chat-system
-it is a react project
+it is a node project
